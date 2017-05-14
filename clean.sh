@@ -1,5 +1,5 @@
 #!/bin/bash
-rm -rf data/Leaf_segmentation/*_masked
+rm -rf data
 rm -rf results
 rm -rf reports
 rm -rf config

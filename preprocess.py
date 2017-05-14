@@ -44,7 +44,7 @@ def preprocess_dataset(dataset):
         _, mask = cv2.threshold(in_labels_grayscale, 0, 255, cv2.THRESH_BINARY)
         in_rgb_masked = cv2.bitwise_and(in_rgb, in_rgb, mask=mask)
 
-        # Scale both images to be 100x100
+        # Scale both images to be 200x200
         out_rgb = cv2.resize(in_rgb_masked, (scaledWidth, scaledHeight))
         out_labels = cv2.resize(
             in_labels, (scaledWidth, scaledHeight),
@@ -58,6 +58,10 @@ def preprocess_dataset(dataset):
             raise RuntimeError(
                 "Failed to write labels {}".format(out_labels_path)
             )
+
+        # Convert the labels image to grayscale
+        eng.convert_to_grayscale(out_labels_path, out_labels_path, nargout=0)
+
     leaf_counts = {
         os.path.basename(info[3]): int(eng.count_leaves(info[3])) for info in images
     }
