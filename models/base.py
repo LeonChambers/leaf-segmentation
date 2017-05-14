@@ -68,10 +68,13 @@ class LeafSegmentationModel(object):
     def evaluate(self):
         eng.my_eval(self.run_id, nargout=0)
 
-    def write_timing_report(self, new_timings):
+    def update_timing_report(self, new_timings):
         report_filepath = os.path.join(self.reports_path, "timing.json")
-        with open(report_filepath, "r") as f:
-            timings = json.load(f)
+        if os.path.isfile(report_filepath):
+            with open(report_filepath, "r") as f:
+                timings = json.load(f)
+        else:
+            timings = {}
         timings.update(new_timings)
         with open(report_filepath, "w+") as f:
             json.dump(timings, f, indent=4)
