@@ -159,10 +159,16 @@ class Model(LeafSegmentationModel):
             os.makedirs(self.config_path)
         shutil.move(curr_config_path, desired_config_path)
 
+        # Delete training results and config
         shutil.rmtree(tuner.model.results_path)
         shutil.rmtree(tuner.model.config_path)
         os.rmdir(os.path.dirname(tuner.model.config_path))
         os.rmdir(os.path.dirname(tuner.model.results_path))
+
+        # Clean opentuner cache
+        top_level_dir = os.path.dirname(os.path.dirname(__file__))
+        os.remove(os.path.join(top_level_dir, "opentuner.log"))
+        shutil.rmtree(os.path.join(top_level_dir, "opentuner.db"))
 
     def pre_test(self, data):
         super(Model, self).pre_test(data)

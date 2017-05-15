@@ -35,8 +35,10 @@ Combined_test = CombinedDataset(
     "Combined_test", Ara2012_test, Ara2013_test, Tobacco_test
 )
 
-Cross_train = Ara2012
-Cross_test = CombinedDataset("Cross_test", Ara2012, Ara2013, Tobacco)
+Cross_train = Ara2012_train
+Cross_test = CombinedDataset(
+    "Cross_test", Ara2012_test, Ara2013_test, Tobacco_test
+)
 
 experiments = {
     "cross": (Cross_train, Cross_test),
