@@ -10,7 +10,6 @@ from imutils import contours
 import opentuner
 from opentuner.search.objective import MaximizeAccuracy
 from opentuner.measurement.inputmanager import FixedInputManager
-from matplotlib import pyplot as plt
 
 from .base import LeafSegmentationModel
 
