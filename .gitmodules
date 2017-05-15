@@ -1,3 +1,6 @@
 [submodule "RIS"]
 	path = RIS
 	url = https://github.com/bernard24/RIS.git
+[submodule "LeafAnnotationTool"]
+	path = LeafAnnotationTool
+	url = https://github.com/phenotiki/LeafAnnotationTool.git
