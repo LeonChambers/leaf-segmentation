@@ -24,7 +24,7 @@ Tobacco = SimpleDataset("Tobacco_preprocessed", "tobacco", 62)
 Ara2012_train = SubsetDataset(Ara2012, 0, 80)
 Ara2012_test = SubsetDataset(Ara2012, 80, 120)
 
-Ara2013_train = SubsetDataset(Ara2012, 0, 110)
+Ara2013_train = SubsetDataset(Ara2013, 0, 110)
 Ara2013_test = SubsetDataset(Ara2013, 110, 165)
 
 Tobacco_train = SubsetDataset(Tobacco, 0, 41)
