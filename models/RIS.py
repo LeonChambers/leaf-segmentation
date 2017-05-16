@@ -31,7 +31,7 @@ def ModelBuilder(rnn_layers, rnn_channels):
                 "th", "experiment.lua",
                 "-name", self.run_id,
                 "-data_dir", top_level_dir+"/",
-                "-seq_length", "20",
+                # "-seq_length", "20",
                 "-learning_rate", "0.0002",
                 "-rnn_layers", str(self.rnn_layers),
                 "-rnn_channels", str(self.rnn_channels),

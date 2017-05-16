@@ -89,7 +89,7 @@ while input_file ~= nil do
 
     canvas = torch.zeros(xSize, ySize)
     for t=counter,1,-1 do
-        canvas[solutions:sub(t,t):gt(0.9)] = t
+        canvas[solutions:sub(t,t):gt(0.9)] = t/256;
         --canvas[solutions:select(1,t):gt(0.9)] = t
     end
 
