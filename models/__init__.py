@@ -5,11 +5,8 @@ from .LeafAnnotation import Model as LeafAnnotationModel
 
 model_dict = {
     "blob": BlobDetectionModel,
+    "ris_2_20": RISModelBuilder(2, 20)
     "annotation": LeafAnnotationModel,
-    "ris_1_15": RISModelBuilder(1, 15),
-    "ris_2_15": RISModelBuilder(2, 15),
-    "ris_1_30": RISModelBuilder(1, 30),
-    "ris_2_30": RISModelBuilder(2, 30)
 }
 
 available_models = model_dict.keys()
