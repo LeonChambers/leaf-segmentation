@@ -1,10 +1,12 @@
 from .dataset import SimpleDataset, CombinedDataset, SubsetDataset
 from .BlobDetection import Model as BlobDetectionModel
 from .RIS import ModelBuilder as RISModelBuilder
+from .LeafAnnotation import Model as LeafAnnotationModel
 
 model_dict = {
     "blob": BlobDetectionModel,
     "ris_2_20": RISModelBuilder(2, 20)
+    "annotation": LeafAnnotationModel,
 }
 
 available_models = model_dict.keys()

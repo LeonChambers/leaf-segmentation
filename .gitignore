@@ -7,3 +7,4 @@ config
 *.pyc
 data_list.txt
 label_list.txt
+*.swp

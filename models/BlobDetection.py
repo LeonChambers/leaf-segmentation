@@ -136,7 +136,7 @@ class Model(LeafSegmentationModel):
         for i, keypoint in enumerate(keypoints):
             center = (int(keypoint.pt[0]), int(keypoint.pt[1]))
             cv2.circle(
-                output_image, center, int(keypoint.size/2), i, -1
+                output_image, center, 0, (i, i, i), -1
             )
 
         return output_image, len(keypoints)
