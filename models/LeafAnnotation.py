@@ -21,7 +21,7 @@ class Model(LeafSegmentationModel):
         blob_detector.prepare_output(data)
         blob_detector.test(data)
 
-        for beta in range(5, 101, 5):
+        for beta in range(50, 101, 5):
             print "Testing beta value of {}".format(beta)
             model = Model(self.run_id+'_train', dry=self.dry, beta=beta)
             model.prepare_output(data)

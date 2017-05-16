@@ -4,6 +4,8 @@ addpath('./LeafAnnotationTool');
 addpath('./LeafAnnotationTool/graphAnalysisToolbox-1.0');
 
 image = imread(in_image_path);
+cform = makecform('srgb2lab');
+lab = double(applycform(image, cform));
 
 label_image = rgb2gray(imread(label_image_path));
 seeds = find(label_image);
@@ -11,9 +13,11 @@ seeds = find(label_image);
 labels = 1:length(seeds);
 
 if length(seeds) >= 1
-    [mask, ~] = random_walker(image, seeds, labels, double(beta));
+    [masks, ~] = random_walker(lab, seeds, labels, double(beta));
 
-    imwrite(uint8(mask-1), out_image_path);
+    masks = masks .* (max(image, [], 3) ~= 0);
+
+    imwrite(uint8(masks), out_image_path);
 else
     imwrite(label_image, out_image_path);
 end
