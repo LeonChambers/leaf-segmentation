@@ -5,7 +5,7 @@ from .LeafAnnotation import Model as LeafAnnotationModel
 
 model_dict = {
     "blob": BlobDetectionModel,
-    "ris_2_20": RISModelBuilder(2, 20)
+    "ris_2_20": RISModelBuilder(2, 20),
     "annotation": LeafAnnotationModel,
 }
 
