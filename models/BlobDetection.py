@@ -125,7 +125,7 @@ class Model(LeafSegmentationModel):
                 cfg["minInertiaRatio"] + cfg["inertiaRatioRange"]
         self.params.minArea = cfg["minArea"]
         self.params.maxArea = cfg["minArea"] + cfg["areaRange"]
-        self.detector = cv2.SimpleBlobDetector(self.params)
+        self.detector = cv2.SimpleBlobDetector_create(self.params)
 
     def process_image(self, image):
         # Detect blobs.
