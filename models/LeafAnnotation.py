@@ -35,7 +35,7 @@ class Model(LeafSegmentationModel):
             for report_path in glob.glob(reports_glob):
                 with open(report_path, "r") as f:
                     first = f.readline()
-                    dataset_name = first.strip()[20:].lower()
+                    dataset_name = first.strip()[20:].lower().split("-")[0]
                     f.readline()
                     f.readline()
                     line = f.readline().strip()
