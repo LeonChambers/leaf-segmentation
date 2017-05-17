@@ -1,9 +1,10 @@
 data
 Plant_Phenotyping_Datasets.zip
 opentuner*
-results
-reports
-config
+results*
+reports*
+config*
+examples*
 *.pyc
 data_list.txt
 label_list.txt

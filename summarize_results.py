@@ -4,9 +4,10 @@ import math
 import json
 import argparse
 
-models = ["blob", "annotation", "ris"]
+models = ["blob", "annotation", "ris_2_20"]
 experiments = ["cross", "combined"]
 datasets = ["Ara2012", "Ara2013-Canon", "Tobacco"]
+metrics = ["SBD", "FGBD", "AbsDIC", "DIC"]
 
 # Where the test set starts for each dataset
 min_test_numbers = {
@@ -113,10 +114,25 @@ def calculate_stats(vals):
         "std_dev": std_dev
     }
 
+def display_results(results):
+    print "\t\t\t" + "\t\t".join(metrics)
+    for experiment in experiments:
+        print experiment
+        for model in models:
+            print "  " + model
+            model_results = results[model][experiment]
+            for dataset in datasets:
+                dataset_performance_results = model_results["performance"][dataset]
+                print dataset.rjust(18, " ") + "\t" + "\t".join([
+                    "{:.4f}({:.4f})".format(
+                        dataset_performance_results[metric]["mean"],
+                        dataset_performance_results[metric]["std_dev"]
+                    ) for metric in metrics
+                ])
+            print model_results["timing"]
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("reports_paths", nargs="+")
     args = parser.parse_args()
-    print json.dumps(
-        summarize_results(args.reports_paths), sort_keys=True, indent=4
-    )
+    display_results(summarize_results(args.reports_paths))
